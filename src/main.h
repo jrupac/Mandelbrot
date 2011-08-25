@@ -21,10 +21,8 @@
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
-// Clamp x to [low, high]
-//#define CLAMP(x, low, high) MIN(MAX((x), (low)), (high))
 
-#define _BUDDHABROT
+//#define _BUDDHABROT
 //#define _ABUDDHABROT
 //#define _USE_RANDOM
 

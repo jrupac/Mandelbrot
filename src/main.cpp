@@ -95,7 +95,7 @@ void initRendering()
 
 void color(int itr, int x, int y)
 {
-#if defined _BUDDHABROT || defined _ABUDDHABROT
+#if (defined _BUDDHABROT) || (defined _ABUDDHABROT)
     image[x * WINDOW_Y + y][0] = CLAMP(image[x * WINDOW_Y + y][0] + 8, 0, 255);
     image[x * WINDOW_Y + y][1] = CLAMP(image[x * WINDOW_Y + y][1] + 8, 0, 255);
     image[x * WINDOW_Y + y][2] = CLAMP(image[x * WINDOW_Y + y][2] + 8, 0, 255);
@@ -105,7 +105,11 @@ void color(int itr, int x, int y)
 #ifdef _USE_RANDOM
     int r = colors[itr][0], g = colors[itr][1], b = colors[itr][2];
 #else
-    int r = 0, g = (int)((itr * 255.0)/ITR), b = g;
+    int r, g, b;
+    if (itr < ITR)
+        r = g = b = (int)((itr * 255.0) / ITR);
+    else
+        r = g = b = 0;
 #endif
     image[x * WINDOW_Y + y][0] = (char)r;
     image[x * WINDOW_Y + y][1] = (char)g;
